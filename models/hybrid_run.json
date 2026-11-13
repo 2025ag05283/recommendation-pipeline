@@ -1,0 +1,14 @@
+{
+  "model": "hybrid",
+  "run_id": "baf5c5e12c41415fa01deb98e76efeec",
+  "model_path": "C:\\Users\\lenovo\\project_dm4ml\\recommendation-pipeline\\recommendation-pipeline\\models\\hybrid.pkl",
+  "trained_at": "2026-11-14 00:32:47",
+  "fit_seconds": 56.85,
+  "params": {
+    "model": "hybrid",
+    "w_content": 0.5,
+    "w_pop": 2.0,
+    "base_mf_factors": 40
+  },
+  "val_ndcg_at_10": 0.148
+}

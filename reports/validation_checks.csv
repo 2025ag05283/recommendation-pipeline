@@ -1,0 +1,21 @@
+table,check,category,rule,failed_rows,status
+users,user_required_fields,missing,"user_id, age and gender must be present",1,FAIL
+users,user_id_integer,type,user_id must be an integer,0,PASS
+users,age_integer,type,age must be an integer,1,FAIL
+users,age_in_range,range,"age must be within [1, 100]",2,FAIL
+users,gender_allowed,range,"gender must be one of ['F', 'M']",1,FAIL
+users,user_id_unique,duplicate,user_id must be unique (first occurrence kept),1,FAIL
+items,item_required_fields,missing,item_id and title must be present,1,FAIL
+items,item_id_integer,type,item_id must be an integer,0,PASS
+items,release_date_format,timestamp,"release_date, if present, must be a valid DD-Mon-YYYY date",1,FAIL
+items,genre_flags_binary,type,every genre flag must be 0 or 1,1,FAIL
+items,item_id_unique,duplicate,item_id must be unique (first occurrence kept),1,FAIL
+interactions,interaction_required_fields,missing,"user_id, item_id, rating and timestamp must be present",4,FAIL
+interactions,ids_integer,type,user_id and item_id must be integers,1,FAIL
+interactions,rating_numeric,type,rating must be numeric,1,FAIL
+interactions,rating_valid,range,"rating must be an integer in [1, 5]",5,FAIL
+interactions,timestamp_numeric,timestamp,timestamp must be a unix epoch integer,1,FAIL
+interactions,timestamp_plausible,timestamp,timestamp must be between 1995-01-01 and now,2,FAIL
+interactions,no_exact_duplicates,duplicate,exact duplicate interaction rows are not allowed (first kept),10,FAIL
+interactions,user_exists,referential,user_id must exist in the validated users table,4,FAIL
+interactions,item_exists,referential,item_id must exist in the validated items table,2,FAIL

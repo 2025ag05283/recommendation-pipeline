@@ -1,0 +1,17 @@
+{
+  "model": "matrix_factorization",
+  "run_id": "eb18609a81c840ebaf5fb24291f7c4d4",
+  "model_path": "C:\\Users\\lenovo\\project_dm4ml\\recommendation-pipeline\\recommendation-pipeline\\models\\matrix_factorization.pkl",
+  "trained_at": "2026-11-14 00:32:20",
+  "fit_seconds": 30.24,
+  "params": {
+    "model": "matrix_factorization",
+    "n_factors": 40,
+    "n_epochs": 30,
+    "learning_rate": 0.01,
+    "regularization": 0.05,
+    "min_item_support": 5,
+    "seed": 42
+  },
+  "train_rmse": 0.5979564883910429
+}

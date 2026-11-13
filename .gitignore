@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Generated data (re-created by `python run_pipeline.py`)
+data/raw/*
+data/processed/*
+data/features/*
+data/errors/*
+!data/**/.gitkeep
+models/*.pkl
+logs/*.log
+
+# Experiment tracking stores
+mlruns/
+mlflow.db
+
+# Keep reports/ (validation report, feature catalog, results, figures, final report) under version control.
+reports/tracking/

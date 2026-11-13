@@ -1,0 +1,70 @@
+# =====================================================================
+# Central configuration for the recommendation data-management pipeline.
+# Every stage reads ONLY from this file, so a run is fully reproducible
+# from (code version + this config + seed).
+# =====================================================================
+
+project:
+  name: movielens-recommendation-pipeline
+  seed: 42                      # global random seed (synthetic data, dirty-record injection, MF init)
+
+paths:                          # all paths are relative to the repository root
+  raw: data/raw
+  processed: data/processed
+  features: data/features
+  errors: data/errors
+  models: models
+  reports: reports
+  figures: reports/figures
+  logs: logs
+
+storage:
+  format: parquet               # parquet | csv  (falls back to csv automatically if pyarrow is missing)
+
+ingestion:
+  source: movielens             # movielens | synthetic
+  movielens_url: https://files.grouplens.org/datasets/movielens/ml-100k.zip
+  fallback_to_synthetic: true   # if the download fails (no internet), generate MovieLens-format synthetic data
+  inject_dirty_records: true    # add a small, documented set of bad records to demonstrate validation
+  synthetic:
+    n_users: 943
+    n_items: 1682
+    n_ratings: 100000
+
+validation:
+  rating_min: 1
+  rating_max: 5
+  min_timestamp: "1995-01-01"   # earliest plausible interaction date
+  min_age: 1
+  max_age: 100
+  allowed_genders: ["M", "F"]
+  max_error_rate: 0.05          # quality gate: pipeline stops if > 5% of interactions are invalid
+
+preparation:
+  test_fraction: 0.20           # the most recent 20% of interactions (by timestamp) form the test set
+
+features:
+  bayesian_prior_weight: 10     # m in the Bayesian average: (m*global_mean + sum)/(m + n)
+
+models:
+  popularity:
+    recency_half_life_days: null   # null = plain interaction count
+  matrix_factorization:
+    n_factors: 40
+    n_epochs: 30
+    learning_rate: 0.01
+    regularization: 0.05
+    min_item_support: 5            # items with fewer training ratings are not recommended by MF ranking
+  hybrid:
+    validation_fraction: 0.10      # last 10% of TRAIN (by time) used to tune blend weights (test is never touched)
+    content_weight_grid: [0.0, 0.25, 0.5, 1.0]
+    popularity_weight_grid: [0.0, 0.5, 1.0, 2.0, 3.0]
+
+evaluation:
+  k: 10
+  relevance_threshold: 4           # a test rating >= 4 counts as a relevant item
+
+tracking:
+  enabled: true
+  experiment_name: dm4ml-recommendation-pipeline
+  tracking_uri: sqlite:///mlflow.db  # relative to repo root; view with: mlflow ui --backend-store-uri sqlite:///mlflow.db

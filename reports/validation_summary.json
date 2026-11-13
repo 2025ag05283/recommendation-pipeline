@@ -1,0 +1,26 @@
+{
+  "counts": {
+    "users": {
+      "raw": 949,
+      "valid": 943,
+      "rejected": 6,
+      "rejected_pct": 0.6322444678609063
+    },
+    "items": {
+      "raw": 1686,
+      "valid": 1682,
+      "rejected": 4,
+      "rejected_pct": 0.2372479240806643
+    },
+    "interactions": {
+      "raw": 100024,
+      "valid": 100000,
+      "rejected": 24,
+      "rejected_pct": 0.023994241382068304
+    }
+  },
+  "checks_failed": 18,
+  "checks_total": 20,
+  "pandera_available": true,
+  "error_rows_total": 34
+}

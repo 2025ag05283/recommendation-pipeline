@@ -1,0 +1,22 @@
+# Core data stack
+pandas>=2.0
+numpy>=1.24
+scipy>=1.10
+pyarrow>=14.0          # Parquet storage (falls back to CSV if missing)
+pyyaml>=6.0
+
+# Data validation
+pandera>=0.18
+
+# Experiment tracking
+mlflow>=2.10
+
+# Orchestration
+prefect>=2.14
+
+# Reporting / plots
+matplotlib>=3.7
+markdown>=3.4
+
+# Tests
+pytest>=7.0

@@ -1,0 +1,59 @@
+{
+  "flow": "recommendation-pipeline",
+  "orchestrator": "prefect",
+  "status": "SUCCESS",
+  "finished_at": "2026-11-13 22:55:44",
+  "total_seconds": 117.3,
+  "tasks": [
+    {
+      "task": "ingest",
+      "status": "SUCCESS",
+      "seconds": 1.91
+    },
+    {
+      "task": "validate",
+      "status": "SUCCESS",
+      "seconds": 2.42
+    },
+    {
+      "task": "prepare",
+      "status": "SUCCESS",
+      "seconds": 0.6
+    },
+    {
+      "task": "transform",
+      "status": "SUCCESS",
+      "seconds": 0.41
+    },
+    {
+      "task": "build_features",
+      "status": "SUCCESS",
+      "seconds": 0.31
+    },
+    {
+      "task": "train_popularity",
+      "status": "SUCCESS",
+      "seconds": 6.2
+    },
+    {
+      "task": "train_matrix_factorization",
+      "status": "SUCCESS",
+      "seconds": 48.9
+    },
+    {
+      "task": "train_hybrid",
+      "status": "SUCCESS",
+      "seconds": 50.15
+    },
+    {
+      "task": "evaluate",
+      "status": "SUCCESS",
+      "seconds": 5.3
+    },
+    {
+      "task": "generate_report",
+      "status": "SUCCESS",
+      "seconds": 0.76
+    }
+  ]
+}

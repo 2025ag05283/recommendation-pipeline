@@ -1,0 +1,12 @@
+{
+  "model": "popularity",
+  "run_id": "3f5be1a6df114e1d9f63880b5c215843",
+  "model_path": "C:\\Users\\lenovo\\project_dm4ml\\recommendation-pipeline\\recommendation-pipeline\\models\\popularity.pkl",
+  "trained_at": "2026-11-14 00:31:50",
+  "fit_seconds": 0.01,
+  "params": {
+    "model": "popularity",
+    "ranking": "training interaction count",
+    "rating_prediction": "bayesian item average"
+  }
+}
